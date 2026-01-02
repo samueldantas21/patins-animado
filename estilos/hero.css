@@ -2,7 +2,13 @@ section.hero{
     max-width: 80rem;
     width: 100%;
     padding: 2.5rem 2rem;
+    margin-inline: auto;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* ta servindo pra tira a img do patins */
+    overflow: hidden;
 
     h1{
         max-width: 40rem;
@@ -41,12 +47,150 @@ section.hero{
         display: block;
       
 
-        animation: slideUp 6s infinite ease;
+        animation: slideUp 6s 3s infinite ease;
     }
     
-    
-   
+    /* parte buttons/pai */
+    & .buttons{
+        display: flex;
+        gap: 2rem;
+        margin-top: 3rem;
+
+        /* parte button/filho */
+        & .button{
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+
+
+            border-radius: 5rem ;
+
+            /* usando pra quando passa o mause em cima subir levemente,mas se lembre tem q ta definido um hover */
+            transition: transform 350ms;
+
+            /* quando tiver assim os buy dentro do button nao bota espacoente o" & e ." */
+            &.buy{
+                padding: 1.5rem 3rem;
+                background-color: var(--snitap-sun);
+
+
+            }
+           
+            &.play span {
+                padding: 1.5rem;
+                border-radius: 50%;
+                background-color:white;
+                display: flex;
+               
+            }
+            &:hover{
+                 transform:scale(1.1 ) ;
+            }
+        }
+         /* fazendo o sombreamento  */
+         /* 1:deslocomanteo do eixo "x"
+            2:deslocomanteo do eixo "y" 
+            3: desfoque/blur
+            4:cor /.1 e a opacaidade*/
+        & .shadow{
+            box-shadow: 
+            0 2px 5px rgb(0 0 0 /.1),
+            0 9px 9px rgb(0 0 0 /.09),
+            0 20px 12px rgb(0 0 0 /.05),
+            0 36px 15px rgb(0 0 0 /.01)
+            ;
+        }
+    }
+
+    /* parte imaguen do patins */
+    & > div:nth-child(2){
+        display: block;
+        width: 100%;
+        max-width: 30.5rem;
+        height: 30.5rem;
+
+
+        & .content{
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+        }
+        /* deixando a img do patins e estrlas dentro do bloco/junto do azul */
+        &   img{
+            position: absolute;
+            width: 100%;
+        }
+
+        /* mexendo na bola azul */
+        & img[src*="Ellipse"]{
+            width: 94%;
+            top:3%;
+            left: 3%;
+
+            transform: translateX(200%);
+            /* pra vim mas suave e quando chegar ficar */
+            /* pra espera 200ms  */
+            animation: slideIn 3s 200ms ease forwards;
+        }
+
+        /* deixando os patins emcima  por cima de tudo */
+        & img[src*="patins"]{
+            z-index: 1;
+
+            transform: translateX(200%);
+            animation: slideIn 3s ease forwards;
+        }
+
+        /* estrelas da parte de cima */
+        & img[src*="Stars-1"]{
+            max-width: 5.5rem;
+            top:30%;
+            z-index: 0;
+            
+            opacity: 0;
+            transform: translateX(400%);
+            animation: slideIn 2s 800ms ease forwards,apper 100ms 800ms both;
+        }
+
+
+        /* estralas da parte de baixo */
+        & img[src*="Stars-2"]{
+            max-width: 2.5rem;
+            right:0 ;
+            bottom: 35%;
+            
+            transform: translateX(400%);
+            animation: slideIn 2.2s 800ms ease both;
+
+        }
+    }  
 }
+
+
+
+@keyframes apper{
+    to{
+        opacity: 1;
+    }
+}
+
+/* parte de animacao dos patins */
+@keyframes slideIn{
+
+    /* pra passa um pouco e voltar */
+    50%{
+        transform: translateX(-20px);
+    }
+
+    100%{
+        transform: translateX(0);
+
+    }
+}
+
+
+
   /* botando a animacao nas palavras */
 @keyframes slideUp {
 
