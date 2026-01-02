@@ -1,0 +1,137 @@
+section.hero{
+    max-width: 80rem;
+    width: 100%;
+    padding: 2.5rem 2rem;
+
+
+    h1{
+        max-width: 40rem;
+    }
+
+    h1 div{
+
+        /* ajeitando as letras umas de baixo da outra sem aparecer para o usuario */
+
+        display: inline-block;
+        overflow: hidden;
+        height: 5rem;
+
+        /* serve basicamento pra deixa um de baixo do outro,cria uma caixa q nao quebre a letras mas sim as palavras */
+        width: min-content;
+        /* serve pra alinha a parte em linha */
+        vertical-align: bottom;
+
+    }
+   /* mudando as cores dos span */
+    h1 span:nth-child(1){
+        color:var( --snitap-sky-mid);
+    }
+    h1 span:nth-child(2){
+        color: var(--snitap-joy-mid);
+    }
+    h1 span:nth-child(3){
+        color: var(--snitap-leaf-mid);
+
+    }
+     h1 span:nth-child(4){
+        color:var( --snitap-sky-mid);
+    }
+     /* botando a animacao nas palavras */
+    h1 span{
+        display: block;
+      
+
+        animation: slideUp 6s infinite ease;
+    }
+    
+    
+   
+}
+  /* botando a animacao nas palavras */
+@keyframes slideUp {
+
+    /* radical static */
+    0% ,22%{
+        transform: translateY(0);
+    }
+
+
+
+
+    /* divertida in */
+    /* parte do pulinho divertida */
+
+    /* lebrando q quando for fazer o pulinho das letras tem q botar a base da outra palvra  q no caso aqui e -5rem */
+
+    23%{
+        transform: translateY(calc(-5rem - 15px));
+    }
+
+    25%{
+        transform: translateY(calc(-5rem + 10px));
+    }
+    27% {
+        transform:translateY(calc(-5rem - 5px));
+    }
+
+    29%{
+        transform: translateY(calc(-5rem + 5px));
+    }
+
+    /* divertida static */
+    33%, 55%{
+        transform: translateY(-5rem);
+    }
+
+    /* saudavel in */
+    /* parte do pulinh saudavel */
+
+
+    /* lebrando q quando for fazer o pulinho das letras tem q botar a base da outra palvra  q no caso aqui e -10rem */
+    56%{
+        transform: translateY(calc(-10rem - 15px));
+    }
+    
+    58%{
+        transform: translateY(calc(-10rem + 10px));
+    }
+
+    60%{
+        transform:translateY(calc(-10rem - 5px));
+    }
+    62%{
+        transform: translateY(calc(-10rem + 5px));
+    }
+
+
+    /* saudavel static */
+    66%,88%{
+        transform: translateY(-10rem)
+    }
+
+
+    /* radical in */
+      
+    /* lebrando q quando for fazer o pulinho das letras tem q botar a base da outra palvra  q no caso aqui e -15rem */
+    89%{
+        transform: translateY(calc(-15rem - 15px));
+    }
+    
+    91%{
+        transform: translateY(calc(-15rem + 10px));
+    }
+
+    93%{
+        transform:translateY(calc(-15rem - 5px));
+    }
+    95%{
+        transform: translateY(calc(-15rem + 5px));
+    }
+
+    /* radical static */
+
+
+    100%{
+        transform: translateY(-15rem);
+    }
+}
