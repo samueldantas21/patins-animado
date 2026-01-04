@@ -1,0 +1,141 @@
+section.gallery{
+
+
+    width: 100%;
+    max-width: 80rem;
+    padding: 2.5rem 2rem;
+    /* pra se alinhar ao meio */
+    margin-inline: auto;
+
+    & header{
+        text-align: center;
+    }
+
+    & header span{
+        font:500 var(--text-sm)/1.2 var(--ff-base);
+    }
+
+    & img{
+        /* vai se encaixa dentro da caixa q esta enserido */
+        width: 100%;
+        height: auto;
+    }
+
+    .content{
+        margin-top: 2rem;
+
+        /* fazendo as colunas e botando as medida das colunas, */
+        display: grid;
+        /* lebra q toda vez q for usar esse modo tem q definir cada img usando numero ou letras/da pra conseguir usar com as class o nome da class q vc defenir,mas ai ja e quando quiser usar na pagina enteira */
+        grid-template-areas: 
+        "A B B"
+        "C C D";
+        gap:2.5rem;
+       
+    }
+    & figure{
+        position: relative;
+        /* para aplicar as bordas aqui tem q por o hidden  */
+        border-radius: 2.5rem;
+        overflow: hidden;
+        line-height: 0;
+
+        animation:  image-appear linear backwards;
+        animation-timeline:view();
+        animation-range: 100px 300px ;
+        /* pra quandoo de cima tiver acabando o de baixo comeca */
+        &[data-delay]{
+            animation-range: 150px 350px;
+        }
+
+        & > img{
+            /* tamanho da img */
+            height: 25rem;
+            object-fit: cover;
+            /* tem q botar aqui pra quando tira o mause voltar pra oq era antes se botar no hover ele vai e vai ficar  */
+            transition: scale 500ms;
+        }
+
+        &:hover{
+            /* o scale e pra almentar o tamanho da img */
+            & > img{
+                scale: 1.1;
+            }
+            figcaption {
+                transform: translateY(0);
+            }
+            
+        }
+
+
+        /* observe q aqui vai fazer cada img ter uma caracterea e essa caracterea vai ser como se fosse as medidas das img da onde pra onde e no grid-template-areas vai esta defenindo onde cada uma img vai esta  */
+        /* basicamente serve para definir e nomear regiões dentro de um layout de grade CSS*/
+        &:nth-child(1){
+            grid-area: A;
+        }
+        
+        &:nth-child(2){
+            grid-area: B;
+        }
+        
+        &:nth-child(3){
+            grid-area: C;
+        }
+        
+        &:nth-child(4){
+            grid-area: D;
+        }
+    }
+
+
+
+    & figcaption{
+        /* alinhando a img q esta dentro do figcaption espesificamente a da mulher */
+        display: flex;
+        align-items: center;
+        /* jogando a img e o nome pro final */
+        justify-content: flex-end;
+        /* espacamento da img para a palavra */
+        gap: .5rem;
+
+        font: 500 var(--text-sm)/1.5 var(--ff-base);
+        color: white;
+        
+        /* pra botar a img emcima da outra img */
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
+        padding: 1.5rem 2rem ;
+        /* defenindo q a img da mulher vai ficar por fora,mas esta defenido no hover quando passa o mause em cima ela aparecer */
+        transform: translateY(100%);
+        /* pra dar uma demoradinha quando passa o mause em cima */
+        transition: transform 500ms;
+
+        /* dando um sombreamento */
+        background: linear-gradient(
+            /* o top pra dizer q vem do topo */
+            to top,
+            rgb(0 0 0 / 0.64),
+            rgb(0 0 0 / 0)
+        );
+
+
+
+        
+        & > img{
+        /* largura da img da foto da mulher  */
+        width: 2rem;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 50%;
+        }
+    }
+}
+
+@keyframes image-appear{
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
